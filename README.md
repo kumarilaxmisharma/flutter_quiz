@@ -1,4 +1,4 @@
-# flutter_final
+# flutter_quizz
 
 A new Flutter project.
 
