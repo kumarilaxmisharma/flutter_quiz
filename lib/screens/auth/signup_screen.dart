@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _isVerifying = false;
 
   // ✅ FIX 1: Correct the base URL to the root of your API.
-  final String _baseUrl = 'https://quiz-api.camtech-dev.online/api';
+  final String _baseUrl = 'https://quiz-api.camtech-dev.online';
 
   @override
   void dispose() {
@@ -95,10 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
-          // ✅ FIX 4: Added the username to the request body.
-          // Note: Your Postman screenshot doesn't show a username field.
-          // If your API does NOT need a username, you can remove this line.
-          'username': _usernameController.text.trim(),
+          
           'countryCode': _countryCode.replaceAll('+', ''),
           'phone': _phoneController.text.trim(),
           'password': _passwordController.text,

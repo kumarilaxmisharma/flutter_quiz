@@ -5,11 +5,15 @@ import 'package:flutter_final/models/profile.dart';
 class ProfileHeader extends StatelessWidget {
   final Profile profile;
   final VoidCallback onSettingsTap;
+  // ✅ 1. Add a callback for the logout action
+  final VoidCallback onLogoutTap;
 
   const ProfileHeader({
     super.key,
     required this.profile,
     required this.onSettingsTap,
+    // ✅ 2. Make the logout callback a required parameter
+    required this.onLogoutTap,
   });
 
   @override
@@ -24,12 +28,11 @@ class ProfileHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal:20.0),
       child: Column(
         children: [
-          // --- CORRECTED SECTION START ---
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Invisible widget to balance the settings button on the right
-              const SizedBox(width: 44),
+              // ✅ 3. Replace the invisible placeholder with the new logout button
+              _buildHeaderButton(Icons.logout, onLogoutTap),
 
               // Title that expands to fill the center
               const Expanded(
@@ -44,11 +47,10 @@ class ProfileHeader extends StatelessWidget {
                 ),
               ),
 
-              // Settings button
+              // Existing Settings button
               _buildHeaderButton(Icons.settings, onSettingsTap),
             ],
           ),
-          // --- CORRECTED SECTION END ---
           const SizedBox(height: 20),
           Container(
             width: 110,
@@ -97,6 +99,4 @@ class ProfileHeader extends StatelessWidget {
       ),
     );
   }
-  
-  
 }
